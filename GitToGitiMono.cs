@@ -32,7 +32,7 @@ public class GitToGitiMono : MonoBehaviour
     public void ChangeGitiToGit()
     {
         Refresh();
-        foreach (var item in m_gitFolder)
+        foreach (var item in m_gitiFolder)
         {
             Directory.Move(item, item.Replace(".giti", ".git"));
         }
