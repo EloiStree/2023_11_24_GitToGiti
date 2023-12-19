@@ -40,4 +40,51 @@ public class GitToGitiMono : MonoBehaviour
 
 
     }
+
+
+    [ContextMenu("Generate Url Backup For All Git")]
+    public void GenerateUrlBackupForAll() {
+
+        foreach (var path in m_gitFolder)
+        {
+            if (Directory.Exists(path))
+            {
+
+                string config = path + "/config";
+                GetUrl(config, out string[] urls);
+                CreateUrlFile(path, urls);
+            }
+        }
+        foreach (var path in m_gitiFolder)
+        {
+            if (Directory.Exists(path)) { 
+                string config = path + "/config";
+                GetUrl(config, out string[] urls);
+                CreateUrlFile(path, urls);
+            }
+        }
+
+
+    }
+
+    private void CreateUrlFile(string path, string[] urls)
+    {
+        for (int i = 0; i < urls.Length; i++)
+        {
+            string config = path + "/../GitSource"+i+".url";
+            File.WriteAllText(config, "[InternetShortcut]\nURL = "+urls[i]+"\n"); 
+        }
+    }
+
+    private void GetUrl(string config, out string[] urls)
+    {
+        List<string> l = new List<string>();
+        foreach (var line in config.Split("\n"))
+        {
+            if (line.IndexOf("https") > -1) {
+               l.Add( (line.Substring(line.IndexOf("https") + 5).Trim()));
+            }
+        }
+        urls = l.ToArray();
+    }
 }
