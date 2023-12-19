@@ -50,7 +50,7 @@ public class GitToGitiMono : MonoBehaviour
             if (Directory.Exists(path))
             {
 
-                string config = path + "/config";
+                string config =Path.Combine( path , "config");
                 GetUrl(config, out string[] urls);
                 CreateUrlFile(path, urls);
             }
@@ -58,8 +58,11 @@ public class GitToGitiMono : MonoBehaviour
         foreach (var path in m_gitiFolder)
         {
             if (Directory.Exists(path)) { 
-                string config = path + "/config";
+
+                string config = Path.Combine(path , "config");
+                //Debug.Log(config);
                 GetUrl(config, out string[] urls);
+                //Debug.Log(string.Join("\n",urls));
                 CreateUrlFile(path, urls);
             }
         }
@@ -71,18 +74,21 @@ public class GitToGitiMono : MonoBehaviour
     {
         for (int i = 0; i < urls.Length; i++)
         {
-            string config = path + "/../GitSource"+i+".url";
+            string config =urls.Length==1 ? Path.Combine(path, "../GitURL.url") : Path.Combine(path, "../GitURL" + i + ".url");
             File.WriteAllText(config, "[InternetShortcut]\nURL = "+urls[i]+"\n"); 
         }
     }
 
     private void GetUrl(string config, out string[] urls)
     {
+        string t = File.ReadAllText(config);
         List<string> l = new List<string>();
-        foreach (var line in config.Split("\n"))
+        foreach (var line in t.Split("\n"))
         {
-            if (line.IndexOf("https") > -1) {
-               l.Add( (line.Substring(line.IndexOf("https") + 5).Trim()));
+            int i = line.ToLower().IndexOf("url =");
+            if (i > -1) {
+                //Debug.Log("||"+line);
+                l.Add( (line.Substring(i + 5).Trim()));
             }
         }
         urls = l.ToArray();
