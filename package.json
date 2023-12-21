@@ -1,0 +1,23 @@
+
+{                                                                                
+  "name": "be.eloistree.gittogiti",                              
+  "displayName": "OMIServerXRClient",                        
+  "version": "0.0.1",                         
+  "unity": "2018.1",                             
+  "unityRelease": "",                             
+  "description": "This package allows to turn .git into a .giti that you can ignore in your GitIgnore file. It allows to make project that are git to have git package in the asset folder instead of the package folder to be quickly edited. (It is a dangerous way to work but it allows quick creation of toolbox when you start on it).",                         
+  "keywords": ["Script","Tool"],                       
+  "dependencies":{},     
+  "relatedPackages":{},     
+  "samples" : [],     
+  "author" : {
+"name":"",
+"mail":"",
+"url":""},     
+  "repository":{
+"type":"Git",
+"url":"https://github.com/EloiStree/2023_11_24_GitToGiti.git",
+"footprint":"",
+"revision":""},     
+  "category": "Script"                   
+} 
