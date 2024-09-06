@@ -1,10 +1,12 @@
 
 {                                                                   
-            "name": "be.eloistree.gittogiti",          
-    "references": [
+            "name": "be.elab.gittogitiEditor",          
+    "references": ["be.elab.gittogiti"
 ],                                                              
     "optionalUnityReferences": [],                                  
-    "includePlatforms": [],                                                  
+    "includePlatforms": [                                           
+        "Editor"                                                    
+    ],                                                              
     "excludePlatforms": [],                                         
     "allowUnsafeCode": false,                                       
     "overrideReferences": false,                                    
