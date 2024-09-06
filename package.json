@@ -1,7 +1,12 @@
 
 {                                                                                
+<<<<<<< HEAD
   "name": "be.elab.gittogiti",                              
   "displayName": "OMIServerXRClient",                        
+=======
+  "name": "be.eloistree.gittogiti",                              
+  "displayName": "Git to Giti Ignore",                        
+>>>>>>> e7bcfe6328848b8510e9f0358d4cbde087a4c571
   "version": "0.0.1",                         
   "unity": "2018.1",                             
   "unityRelease": "",                             
